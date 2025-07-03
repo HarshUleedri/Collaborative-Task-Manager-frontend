@@ -1,9 +1,7 @@
-import { useTesting } from "./hooks/useAuth";
+import Router from "./routes/Router";
 
 const App = () => {
-  const { data } = useTesting();
-  console.log(data);
-  return <div>App</div>;
+  return <Router />;
 };
 
 export default App;
