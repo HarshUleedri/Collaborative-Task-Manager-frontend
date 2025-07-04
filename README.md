@@ -1,69 +1,101 @@
-# React + TypeScript + Vite
+# Collaborative Task Manager Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend for the Collaborative Task Manager, a web application designed to help teams manage tasks efficiently with role-based dashboards for Admin, Manager, and Member users.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- User authentication (login/signup)
+- Role-based dashboards (Admin, Manager, Member)
+- Task creation, assignment, and status updates
+- Real-time task overview and management
+- Responsive and modern UI
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React** (with TypeScript)
+- **Vite** (for fast development and build)
+- **Zustand** (for state management)
+- **React Router** (for routing)
+- **Custom Hooks** for API and logic abstraction
+- **Lucide React** (icons)
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Project Structure
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+components.json
+eslint.config.js
+index.html
+package.json
+README.md
+vite.config.ts
+public/
+src/
+  App.tsx
+  index.css
+  main.tsx
+  ...
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- `src/pages/` contains main page components (Dashboard, Login, Signup, etc.)
+- `src/components/` contains reusable UI and common components
+- `src/hooks/` contains custom React hooks
+- `src/api/` contains API configuration and endpoints
+- `src/store/` contains Zustand stores
+- `src/types/` contains TypeScript type definitions
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Getting Started
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Prerequisites
+
+- Node.js (v16 or above recommended)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone <repo-url>
+   cd Collabrative-task-manager-frontend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+### Running the App
+
+Start the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
 ```
+
+The app will be available at `http://localhost:5173` by default.
+
+### Building for Production
+
+```bash
+npm run build
+# or
+yarn build
+```
+
+### Linting
+
+```bash
+npm run lint
+# or
+yarn lint
+```
+
+## Environment Variables
+
+Create a `.env` file in the root directory and add any required environment variables (e.g., API endpoints).
+
+## Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
