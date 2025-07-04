@@ -34,7 +34,7 @@ const AdminDashboard = () => {
       <Navbar />
 
       <div className="flex">
-        <aside className="w-72 border-r h-screen p-4">
+        <aside className="w-72 hidden lg:block border-r h-screen p-4">
           <div className="space-y-2 ">
             {navTab.map((item) => (
               <div
@@ -61,13 +61,13 @@ const AdminDashboard = () => {
           </div>
         </aside>
         <main className="p-8 w-full">
-          <div className="flex justify-between items-center ">
-            <h2 className="text-3xl tracking-tight font-semibold">
+          <div className="flex flex-col lg:flex-row justify-between items-start gap-4 lg:gap-0 lg:items-center ">
+            <h2 className=" text-2xl lg:text-3xl tracking-tight font-semibold">
               Welcome Back Admin
             </h2>
             <Button
               onClick={() => navigate("/admin/create")}
-              className="flex items-center gap-2 text-lg"
+              className="flex items-center gap-2  lg:text-lg"
             >
               <Plus />
               Create Task

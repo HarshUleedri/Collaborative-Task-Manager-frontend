@@ -170,7 +170,10 @@ const UpdateTaskForm = () => {
           )}
         </CardContent>
         <CardFooter className="space-x-4">
-          <Button variant={"outline"} onClick={() => navigate("/manager")}>
+          <Button
+            variant={"outline"}
+            onClick={() => navigate(`/${user?.role}`)}
+          >
             Cancel
           </Button>
           <Button disabled={isPending}>

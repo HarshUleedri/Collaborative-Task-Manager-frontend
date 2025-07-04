@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useCreateTask } from "@/hooks/useTask";
+import { useAuthStore } from "@/store/useAuthStore";
 import type { TaskCreateDataType } from "@/types/usertypes";
 import { CheckCircle } from "lucide-react";
 import { useState } from "react";
@@ -27,6 +28,7 @@ const CreateTaskForm = () => {
   const { mutateAsync, isPending, error } = useCreateTask();
 
   const navigate = useNavigate();
+  const { user } = useAuthStore((state) => state);
 
   //helper function
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -126,7 +128,10 @@ const CreateTaskForm = () => {
           )}
         </CardContent>
         <CardFooter className="space-x-4">
-          <Button variant={"outline"} onClick={() => navigate("/manager")}>
+          <Button
+            variant={"outline"}
+            onClick={() => navigate(`/${user?.role}`)}
+          >
             Cancel
           </Button>
           <Button disabled={isPending}>

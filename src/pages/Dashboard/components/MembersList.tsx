@@ -6,13 +6,17 @@ const MembersList = () => {
   const { data } = useAllUser();
 
   const userArr: UserData[] = data?.users;
+
+  if (userArr?.length === 0) {
+    return <div className="text-2xl mt-4">No Member yet</div>;
+  }
   return (
     <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8 ">
       {userArr?.map((user) => (
         <Card key={user._id}>
-          <CardContent className="space-y-4 ">
+          <CardContent className="space-y-2 lg:space-y-4 ">
             <div className="flex items-center gap-6">
-              <div className="size-26 p-1 border rounded-full">
+              <div className="size-16 lg:size-26 p-1 border rounded-full">
                 <img
                   className="size-full rounded-full"
                   src={
