@@ -32,7 +32,7 @@ const ProfileInfo = () => {
           <div className="flex items-center gap-4">
             <span className="text-base font-medium">Join At:</span>
             <p className="font-medium text-muted-foreground">
-              {new Date(user?.createdAt).toLocaleDateString("en-US", {
+              {new Date(user?.createdAt ?? "").toLocaleDateString("en-US", {
                 day: "2-digit",
                 month: "short",
                 year: "2-digit",
