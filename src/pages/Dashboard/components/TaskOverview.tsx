@@ -4,7 +4,7 @@ import type { TaskDataType } from "@/types/usertypes";
 import TaskCard from "./TaskCard";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Filter, Search } from "lucide-react";
+import { Filter } from "lucide-react";
 import { useState } from "react";
 import {
   DropdownMenu,

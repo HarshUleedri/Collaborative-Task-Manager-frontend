@@ -3,7 +3,7 @@ import { useAllUser } from "@/hooks/useUser";
 import type { UserData } from "@/types/usertypes";
 
 const MembersList = () => {
-  const { data, isLoading, isError } = useAllUser();
+  const { data } = useAllUser();
 
   const userArr: UserData[] = data?.users;
   return (

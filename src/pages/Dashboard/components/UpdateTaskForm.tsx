@@ -14,7 +14,7 @@ import { useAuthStore } from "@/store/useAuthStore";
 import type { TaskDataType, TaskUpdateDataType } from "@/types/usertypes";
 import { CheckCircle } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useActionData, useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 type StatusType = "TO DO" | "In Progress" | "Done";
 

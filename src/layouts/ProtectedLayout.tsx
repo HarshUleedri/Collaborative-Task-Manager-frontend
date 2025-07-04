@@ -1,4 +1,3 @@
-import AdminDashboard from "@/pages/Dashboard/AdminDashboard/AdminDashboard";
 import MemberDashboard from "@/pages/Dashboard/MemberDashboard/MemberDashboard";
 import { useAuthStore } from "@/store/useAuthStore";
 import { Navigate, Outlet } from "react-router";
