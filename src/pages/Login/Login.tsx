@@ -94,7 +94,7 @@ const PatientLogin = () => {
           </Button>
           <div className="text-center text-sm">
             Don't have an account?{" "}
-            <Link className="font-bold" to={"/patient/signup"}>
+            <Link className="font-bold" to={"/signup"}>
               Create one
             </Link>
           </div>

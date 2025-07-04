@@ -4,6 +4,7 @@ import {
   logoutApi,
   signupApi,
   testApi,
+  uploadImage,
 } from "@/api/authApi/authApi";
 import { useAuthStore } from "@/store/useAuthStore";
 import type { UserSignupDataType } from "@/types/usertypes";
@@ -29,7 +30,7 @@ export const useSignup = () => {
       try {
         setIsLoading(true);
         const res = await getUser();
-        login(res.doctor);
+        login(res.user);
         navigate("/", { replace: true });
       } catch (error) {
         setIsLoading(false);
@@ -68,7 +69,8 @@ export const useLogin = () => {
       try {
         setIsLoading(true);
         const res = await getUser();
-        login(res.doctor);
+        console.log(res);
+        login(res.user);
         navigate("/", { replace: true });
       } catch (error) {
         setIsLoading(false);
@@ -101,6 +103,16 @@ export const useLogout = () => {
     mutationFn: logoutApi,
     onSuccess: () => {
       logout(); // Clear user data from the store
+    },
+  });
+};
+
+export const useUploadImage = () => {
+  const navigate = useNavigate();
+  return useMutation({
+    mutationFn: (data: FormData) => uploadImage(data),
+    onSuccess: () => {
+      navigate("/login");
     },
   });
 };

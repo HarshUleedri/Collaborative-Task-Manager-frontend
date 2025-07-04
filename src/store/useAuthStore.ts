@@ -1,14 +1,15 @@
+import type { UserData } from "@/types/usertypes";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 interface AuthStateType {
   isAuthenticated: boolean;
-  user: any;
+  user: UserData | null;
   isLoading: boolean;
   isError: string | null;
-  login: (user: any) => void;
+  login: (user: UserData) => void;
   logout: () => void;
-  setUser: (user: any) => void;
+  setUser: (user: UserData) => void;
   setIsLoading: (isLoading: boolean) => void;
   setIsError: (error: string | null) => void;
 }

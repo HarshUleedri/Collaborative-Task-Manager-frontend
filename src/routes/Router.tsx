@@ -1,7 +1,14 @@
+import ProfileInfo from "@/components/common/ProfileInfo";
 import ProtectedLayout from "@/layouts/ProtectedLayout";
+import ComingSoon from "@/pages/ComingSoon/ComingSoon";
+import CreateTaskForm from "@/pages/Dashboard/ManagerDashboard/components/CreateTaskForm";
+import TaskOverview from "@/pages/Dashboard/ManagerDashboard/components/TaskOverview";
+import UpdateTaskForm from "@/pages/Dashboard/ManagerDashboard/components/UpdateTaskForm";
+import ManagerDashboard from "@/pages/Dashboard/ManagerDashboard/ManagerDashboard";
 import Home from "@/pages/Home/Home";
 import Login from "@/pages/Login/Login";
 import NotFound from "@/pages/NotFound/NotFound";
+import Signup from "@/pages/Signup/Signup";
 import { createBrowserRouter, RouterProvider } from "react-router";
 
 const Router = () => {
@@ -11,6 +18,10 @@ const Router = () => {
       element: <Login />,
     },
     {
+      path: "/signup",
+      element: <Signup />,
+    },
+    {
       path: "/",
       element: <ProtectedLayout />,
       children: [
@@ -18,8 +29,59 @@ const Router = () => {
           index: true,
           element: <Home />,
         },
+        {
+          path: "profile",
+          element: <ProfileInfo />,
+        },
+        {
+          path: "my-tasks",
+          element: <Home />,
+        },
+        {
+          path: "projects",
+          element: <ComingSoon />,
+        },
+        {
+          path: "analytics",
+          element: <ComingSoon />,
+        },
       ],
     },
+    {
+      path: "/manager",
+      element: <ManagerDashboard />,
+      children: [
+        {
+          index: true,
+          element: <TaskOverview />,
+        },
+        {
+          path: "create",
+          element: <CreateTaskForm />,
+        },
+        {
+          path: "task/:id",
+          element: <UpdateTaskForm />,
+        },
+        {
+          path: "profile",
+          element: <ProfileInfo />,
+        },
+        {
+          path: "projects",
+          element: <ComingSoon />,
+        },
+        {
+          path: "analytics",
+          element: <ComingSoon />,
+        },
+        {
+          path: "tasks-overview",
+          element: <TaskOverview />,
+        },
+      ],
+    },
+    //not found route
     {
       path: "*",
       element: <NotFound />,

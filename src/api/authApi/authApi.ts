@@ -50,7 +50,18 @@ export const logoutApi = async () => {
 
 export const getUser = async () => {
   try {
-    const res = await axiosInstance.post("auth/me");
+    const res = await axiosInstance.get("auth/me");
+    console.log(res);
+    return res.data;
+  } catch (error) {
+    console.log("Error at login api ", error);
+    throw error;
+  }
+};
+
+export const uploadImage = async (data: FormData) => {
+  try {
+    const res = await axiosInstance.post("/upload/image", data);
     console.log(res);
     return res.data;
   } catch (error) {
