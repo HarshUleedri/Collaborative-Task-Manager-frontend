@@ -108,11 +108,7 @@ export const useLogout = () => {
 };
 
 export const useUploadImage = () => {
-  const navigate = useNavigate();
   return useMutation({
     mutationFn: (data: FormData) => uploadImage(data),
-    onSuccess: () => {
-      navigate("/login");
-    },
   });
 };
