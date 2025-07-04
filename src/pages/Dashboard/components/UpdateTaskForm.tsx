@@ -10,10 +10,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useSingleTask, useUpdateTaskStatus } from "@/hooks/useTask";
+import { useAuthStore } from "@/store/useAuthStore";
 import type { TaskDataType, TaskUpdateDataType } from "@/types/usertypes";
 import { CheckCircle } from "lucide-react";
-import { useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useEffect, useState } from "react";
+import { useActionData, useNavigate, useParams } from "react-router";
 
 type StatusType = "TO DO" | "In Progress" | "Done";
 
@@ -28,16 +29,26 @@ const UpdateTaskForm = () => {
 
   const { mutateAsync, isPending, error } = useUpdateTaskStatus(taskId);
   const { data } = useSingleTask(taskId);
+  const { user } = useAuthStore((state) => state);
 
   const singleTaskData: TaskDataType = data?.task;
   console.log(singleTaskData);
   const [status, setStatus] = useState<StatusType>(singleTaskData?.status);
   const [formData, setFormData] = useState<TaskUpdateDataType>({
-    title: singleTaskData?.title,
-    description: singleTaskData?.description,
-    assignedTo: singleTaskData?.assignedTo,
-    status: singleTaskData?.status,
+    title: "",
+    description: "",
+    assignedTo: "",
+    status: "",
   });
+
+  useEffect(() => {
+    setFormData({
+      title: singleTaskData?.title,
+      description: singleTaskData?.description,
+      assignedTo: singleTaskData?.assignedTo,
+      status: singleTaskData?.status,
+    });
+  }, [singleTaskData]);
 
   const navigate = useNavigate();
 
@@ -69,7 +80,9 @@ const UpdateTaskForm = () => {
           <Button
             className=" w-full "
             onClick={() => {
-              navigate("/manager", { replace: true });
+              navigate(`/${user?.role.trim().toLocaleLowerCase()}`, {
+                replace: true,
+              });
               setIsSubmitted(false);
             }}
             variant={"outline"}
@@ -169,7 +182,6 @@ const UpdateTaskForm = () => {
           </Button>
         </CardFooter>
       </Card>
-      {JSON.stringify(formData)}
     </form>
   );
 };

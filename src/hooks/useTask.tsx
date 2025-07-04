@@ -31,6 +31,7 @@ export const useSingleTask = (id: string) => {
   return useQuery({
     queryKey: ["single tasks"],
     queryFn: () => getSingleTaskApi(id),
+    enabled: !!id,
   });
 };
 export const useUpdateTaskStatus = (id: string) => {

@@ -22,7 +22,7 @@ const ProtectedLayout = () => {
     return <Navigate to={"/manager"} />;
   }
   if (isAuthenticated && user?.role === "Admin") {
-    return <AdminDashboard />;
+    return <Navigate to={"/admin"} />;
   }
 
   return <Outlet />;

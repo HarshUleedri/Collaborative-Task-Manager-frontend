@@ -1,9 +1,11 @@
 import ProfileInfo from "@/components/common/ProfileInfo";
 import ProtectedLayout from "@/layouts/ProtectedLayout";
 import ComingSoon from "@/pages/ComingSoon/ComingSoon";
-import CreateTaskForm from "@/pages/Dashboard/ManagerDashboard/components/CreateTaskForm";
-import TaskOverview from "@/pages/Dashboard/ManagerDashboard/components/TaskOverview";
-import UpdateTaskForm from "@/pages/Dashboard/ManagerDashboard/components/UpdateTaskForm";
+import AdminDashboard from "@/pages/Dashboard/AdminDashboard/AdminDashboard";
+import CreateTaskForm from "@/pages/Dashboard/components/CreateTaskForm";
+import MembersList from "@/pages/Dashboard/components/MembersList";
+import TaskOverview from "@/pages/Dashboard/components/TaskOverview";
+import UpdateTaskForm from "@/pages/Dashboard/components/UpdateTaskForm";
 import ManagerDashboard from "@/pages/Dashboard/ManagerDashboard/ManagerDashboard";
 import Home from "@/pages/Home/Home";
 import Login from "@/pages/Login/Login";
@@ -66,6 +68,44 @@ const Router = () => {
         {
           path: "profile",
           element: <ProfileInfo />,
+        },
+        {
+          path: "projects",
+          element: <ComingSoon />,
+        },
+        {
+          path: "analytics",
+          element: <ComingSoon />,
+        },
+        {
+          path: "tasks-overview",
+          element: <TaskOverview />,
+        },
+      ],
+    },
+    {
+      path: "/admin",
+      element: <AdminDashboard />,
+      children: [
+        {
+          index: true,
+          element: <AdminDashboard />,
+        },
+        {
+          path: "create",
+          element: <CreateTaskForm />,
+        },
+        {
+          path: "task/:id",
+          element: <UpdateTaskForm />,
+        },
+        {
+          path: "profile",
+          element: <ProfileInfo />,
+        },
+        {
+          path: "members",
+          element: <MembersList />,
         },
         {
           path: "projects",

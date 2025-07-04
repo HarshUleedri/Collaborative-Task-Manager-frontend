@@ -11,7 +11,10 @@ const ProfileInfo = () => {
             <div className="size-26 p-1 border rounded-full">
               <img
                 className="size-full rounded-full"
-                src={user?.profilePic}
+                src={
+                  user?.profilePic ||
+                  "https://www.shutterstock.com/image-vector/blank-avatar-photo-place-holder-260nw-1095249842.jpg"
+                }
                 alt="profile-image"
               />
             </div>
