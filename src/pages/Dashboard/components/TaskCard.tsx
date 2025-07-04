@@ -15,7 +15,7 @@ const TaskCard = ({ data, role }: TaskCardPropType) => {
   return (
     <div>
       <Card>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-2 lg:space-y-4">
           <div className="flex items-center justify-between ">
             <h3 className="text-xl font-semibold break-words">{data.title}</h3>
             {role !== "member" && (

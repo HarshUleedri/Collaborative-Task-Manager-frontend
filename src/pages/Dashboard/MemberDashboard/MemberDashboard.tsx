@@ -22,7 +22,7 @@ const MemberDashboard = ({ children }: { children: React.ReactNode }) => {
       <Navbar />
 
       <div className="flex">
-        <aside className="w-72 border-r h-screen p-4">
+        <aside className="w-72 hidden lg:block border-r h-screen p-4">
           <div className="space-y-2 ">
             {navTab.map((item) => (
               <div

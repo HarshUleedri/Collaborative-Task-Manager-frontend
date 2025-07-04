@@ -2,6 +2,7 @@ import ProfileInfo from "@/components/common/ProfileInfo";
 import ProtectedLayout from "@/layouts/ProtectedLayout";
 import ComingSoon from "@/pages/ComingSoon/ComingSoon";
 import AdminDashboard from "@/pages/Dashboard/AdminDashboard/AdminDashboard";
+import AdminTaskOverview from "@/pages/Dashboard/components/AdminTaskOverview";
 import CreateTaskForm from "@/pages/Dashboard/components/CreateTaskForm";
 import MembersList from "@/pages/Dashboard/components/MembersList";
 import TaskOverview from "@/pages/Dashboard/components/TaskOverview";
@@ -89,7 +90,7 @@ const Router = () => {
       children: [
         {
           index: true,
-          element: <AdminDashboard />,
+          element: <AdminTaskOverview />,
         },
         {
           path: "create",

@@ -32,7 +32,7 @@ const Home = () => {
     <div className="">
       <div>
         {user?.role === "Member" && (
-          <h2 className="text-3xl tracking-tight font-semibold">
+          <h2 className="text-2xl w-4/5 lg:w-full lg:text-3xl tracking-tight font-semibold">
             Welcome Back {user?.username}
           </h2>
         )}

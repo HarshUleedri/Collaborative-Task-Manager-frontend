@@ -10,13 +10,15 @@ const Navbar = () => {
   const navigate = useNavigate();
   return (
     <header>
-      <nav className="px-12 justify-between flex items-center py-4 border-b">
+      <nav className="px-4 lg:px-12 justify-between flex items-center py-2 lg:py-4 border-b">
         <div onClick={() => navigate("/")}>
-          <h1 className="text-3xl font-semibold tracking-tight">TaskFlow </h1>
+          <h1 className="text-2xl lg:text-3xl font-semibold tracking-tight">
+            TaskFlow{" "}
+          </h1>
         </div>
         <div className="flex items-center gap-4">
           <Link to={"/user"}>
-            <div className="size-12 rounded-full p-1 border">
+            <div className="size-10 lg:size-12 rounded-full p-1 border">
               <img
                 className="size-full rounded-full object-cover"
                 src={
@@ -28,7 +30,7 @@ const Navbar = () => {
             </div>
           </Link>
           <Button onClick={() => mutate()} size={"icon"} variant={"outline"}>
-            <LogOut className="size-5" />
+            <LogOut className="size-4 lg:size-5" />
           </Button>
         </div>
       </nav>
