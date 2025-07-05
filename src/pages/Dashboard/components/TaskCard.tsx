@@ -1,16 +1,23 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { useDeleteTask } from "@/hooks/useTask";
 import type { TaskDataType } from "@/types/usertypes";
 import { SquarePen } from "lucide-react";
 import { useNavigate } from "react-router";
 interface TaskCardPropType {
   data: TaskDataType;
-  role: "manager" | "member" | "admin";
+  role: "Manager" | "Member" | "Admin";
 }
 
 const TaskCard = ({ data, role }: TaskCardPropType) => {
   const navigate = useNavigate();
+
+  const { mutate } = useDeleteTask(data._id);
+
+  const handleDelete = () => {
+    mutate();
+  };
 
   return (
     <div>
@@ -18,7 +25,7 @@ const TaskCard = ({ data, role }: TaskCardPropType) => {
         <CardContent className="space-y-2 lg:space-y-4">
           <div className="flex items-center justify-between ">
             <h3 className="text-xl font-semibold break-words">{data.title}</h3>
-            {role !== "member" && (
+            {role !== "Member" && (
               <Button
                 onClick={() => navigate(`/${role}/task/${data._id}`)}
                 variant={"ghost"}
@@ -63,13 +70,26 @@ const TaskCard = ({ data, role }: TaskCardPropType) => {
               {data.status}
             </Badge>
           </div>
-          <div className="flex items-center gap-4">
-            <span className="text-base font-medium">Created At:</span>
-            {new Date(data.createdAt).toLocaleDateString("en-US", {
-              day: "2-digit",
-              month: "short",
-              year: "numeric",
-            }) || ""}
+
+          <div className="flex justify-between items-center">
+            <div className="flex items-center gap-4">
+              <span className="text-base font-medium">Created At:</span>
+              {new Date(data.createdAt).toLocaleDateString("en-US", {
+                day: "2-digit",
+                month: "short",
+                year: "numeric",
+              }) || ""}
+            </div>
+            {role === "Admin" && (
+              <Button
+                className="py-1 h-6 cursor-pointer text-xs "
+                size={"sm"}
+                variant={"destructive"}
+                onClick={handleDelete}
+              >
+                Delete
+              </Button>
+            )}
           </div>
         </CardContent>
       </Card>

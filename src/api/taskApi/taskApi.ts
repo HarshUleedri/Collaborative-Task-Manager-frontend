@@ -49,3 +49,12 @@ export const updateStatusApi = async (id: string, data: TaskUpdateDataType) => {
     throw error;
   }
 };
+export const deleteTaskApi = async (id: string) => {
+  try {
+    const res = await axiosInstance.delete(`/task/${id}`);
+    return res.data;
+  } catch (error) {
+    console.log("Error at login api ", error);
+    throw error;
+  }
+};

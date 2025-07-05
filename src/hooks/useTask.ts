@@ -1,5 +1,6 @@
 import {
   createTaskApi,
+  deleteTaskApi,
   getAllTask,
   getSingleTaskApi,
   getUserRelatedTask,
@@ -38,6 +39,16 @@ export const useUpdateTaskStatus = (id: string) => {
   const query = useQueryClient();
   return useMutation({
     mutationFn: (data: TaskUpdateDataType) => updateStatusApi(id, data),
+    onSuccess: () => {
+      query.invalidateQueries({ queryKey: ["all tasks"] });
+    },
+  });
+};
+
+export const useDeleteTask = (id: string) => {
+  const query = useQueryClient();
+  return useMutation({
+    mutationFn: () => deleteTaskApi(id),
     onSuccess: () => {
       query.invalidateQueries({ queryKey: ["all tasks"] });
     },
