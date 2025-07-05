@@ -75,7 +75,7 @@ const TaskOverview = () => {
               .includes(search.trim().toLowerCase())
           )
           .map((item) => (
-            <TaskCard role="manager" key={item._id} data={item} />
+            <TaskCard role="Manager" key={item._id} data={item} />
           ))}
       </div>
     </div>

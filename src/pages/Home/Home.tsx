@@ -81,7 +81,7 @@ const Home = () => {
         </div>
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
           {filteredList?.map((item) => (
-            <TaskCard role="member" key={item._id} data={item} />
+            <TaskCard role="Member" key={item._id} data={item} />
           ))}
         </div>
       </div>
